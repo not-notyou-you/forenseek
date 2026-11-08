@@ -1,0 +1,5 @@
+streamlit>=1.50
+tensorflow-cpu>=2.16,<2.22   # samakan dengan versi TF saat pelatihan
+opencv-python-headless>=4.9,<5
+numpy
+pillow
