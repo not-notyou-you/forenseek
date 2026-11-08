@@ -13,7 +13,7 @@ streamlit run app.py
 ## Deploy ke Streamlit Community Cloud
 1. Push folder ini sebagai repositori GitHub (mis. `veritas-lens`).
 2. share.streamlit.io → **Create app** → pilih repo, branch `main`, file `app.py`.
-3. **Advanced settings → Python 3.12**.
+3. **Advanced settings → Python 3.12** (wajib; TensorFlow belum mendukung 3.14). Versi Python tidak bisa diubah setelah deploy — hapus app lalu deploy ulang.
 4. Model: commit `models/model.keras` + `models/model_meta.json`, atau isi Secrets:
    ```toml
    MODEL_URL = "https://.../model.keras"

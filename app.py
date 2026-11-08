@@ -149,7 +149,11 @@ def load_model():
     meta = {**DEFAULT_META, **(json.loads(META_PATH.read_text()) if META_PATH.exists() else {})}
     if not MODEL_PATH.exists():
         return None, meta
-    import tensorflow as tf
+    try:
+        import tensorflow as tf
+    except ImportError:
+        st.session_state["load_error"] = "TensorFlow tidak terpasang. Deploy ulang dengan Python 3.12."
+        return None, meta
     try:
         tf.keras.mixed_precision.set_global_policy("float32")
     except Exception:
@@ -269,6 +273,10 @@ def result_card(prob: float, thr: float, extra: str = ""):
 
 
 def no_model_card():
+    err = st.session_state.get("load_error")
+    if err:
+        html(f'<div class="empty"><div class="ic"></div><h4>Model tidak dapat dimuat</h4><div class="note">{err}</div></div>')
+        return
     html("""
 <div class="empty">
   <div class="ic"></div>
