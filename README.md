@@ -2,8 +2,6 @@
 
 Screens face images and short videos for deepfake manipulation, returning a probability score and a Grad-CAM heatmap of the regions that drove the decision, to help fact-checkers decide what needs verification.
 
-Prototipe skripsi — Arie Pratama Yuliansyah, Sistem Informasi UMN.
-
 ## Jalankan lokal
 ```bash
 pip install -r requirements.txt
