@@ -1,0 +1,4 @@
+profil,EfficientNet-B0,MesoNet,Xception,rekomendasi
+A. Redaksi dengan GPU,0.817731884379335,0.25,0.6543395873535194,EfficientNet-B0
+B. Laptop/cloud tanpa GPU,0.6860609233388264,0.44999999999999996,0.475366419365262,EfficientNet-B0
+C. Perangkat sangat terbatas,0.5543899622983178,0.65,0.310314772829573,MesoNet

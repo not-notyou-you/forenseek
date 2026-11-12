@@ -23,9 +23,9 @@ HERE = Path(__file__).parent
 MODEL_DIR = HERE / "models"
 MODEL_PATH = MODEL_DIR / "model.keras"
 META_PATH = MODEL_DIR / "model_meta.json"
-DEFAULT_META = {"model_name": "xception", "threshold": 0.5, "gradcam_layer": "block14_sepconv2_act", "img_size": 224}
+DEFAULT_META = {"model_name": "efficientnetb0", "threshold": 0.5, "gradcam_layer": "top_activation", "img_size": 224, "preprocess": "internal"}
 
-st.set_page_config(page_title=APP_NAME, page_icon="◐", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title=APP_NAME, layout="wide", initial_sidebar_state="collapsed")
 
 # --------------------------------------------------------------------------- gaya
 st.markdown(
@@ -191,6 +191,8 @@ def crop_face(img: Image.Image, margin: float = 0.25) -> tuple[Image.Image, bool
 def preprocess(img: Image.Image, meta: dict) -> np.ndarray:
     s = int(meta["img_size"])
     x = np.asarray(img.convert("RGB").resize((s, s), Image.BILINEAR), dtype=np.float32)
+    if meta.get("preprocess") == "internal":   # model dari notebook: normalisasi ada di dalam model
+        return x[None]
     name = meta["model_name"]
     if name == "xception":
         x = x / 127.5 - 1.0

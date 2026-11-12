@@ -1,0 +1,10 @@
+{
+  "model_name": "efficientnetb0",
+  "threshold": 0.0841,
+  "gradcam_layer": "top_activation",
+  "img_size": 224,
+  "preprocess": "internal",
+  "run_id": "S1-all-efficientnetb0-s42-jpg-ft",
+  "keras": "3.12.4",
+  "trained_backend": "torch"
+}
